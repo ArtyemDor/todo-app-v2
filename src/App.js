@@ -41,9 +41,9 @@ function App() {
 		setTodos(todos.filter(todo => !todo.isCompleted))
 	}
 
-	const completedTodoCount = todos.filter(todo => todo.isCompleted).length
+	const completedTodosCount = todos.filter(todo => todo.isCompleted).length
 
-	console.log('completedTodoCount', completedTodoCount)
+	console.log('completedTodosCount', completedTodosCount)
 	return (
 		<div className='App'>
 			<h1>Hello from react-app-v2</h1>
@@ -52,6 +52,7 @@ function App() {
 				<TodosActions
 					resetTodo={resetTodoHandler}
 					deleteCompletedTodo={deleteCompletedTodoHandler}
+					todosCompletedExist={!!completedTodosCount}
 				/>
 			)}
 			<TodoList
@@ -60,9 +61,9 @@ function App() {
 				toggleTodo={toggleTodoHandler}
 			/>
 			{!todos.length > 0 && <h2>TodoList is empty</h2>}
-			{completedTodoCount > 0 && (
-				<h2>{`You have completed ${completedTodoCount} ${
-					completedTodoCount === 1 ? 'todo' : 'todos'
+			{completedTodosCount > 0 && (
+				<h2>{`You have completed ${completedTodosCount} ${
+					completedTodosCount === 1 ? 'todo' : 'todos'
 				}`}</h2>
 			)}
 		</div>

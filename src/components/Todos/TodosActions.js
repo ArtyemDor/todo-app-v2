@@ -4,13 +4,17 @@ import Button from '../UI/Button'
 
 import styles from './TodosActions.module.css'
 
-const TodosActions = ({ resetTodo, deleteCompletedTodo }) => {
+const TodosActions = ({
+	resetTodo,
+	deleteCompletedTodo,
+	todosCompletedExist
+}) => {
 	return (
 		<div className={styles.todosActionsContainers}>
-			<Button>
+			<Button title='delete Completed Todo' disabled={!todosCompletedExist}>
 				<RiDeleteBin2Line onClick={deleteCompletedTodo} />
 			</Button>
-			<Button>
+			<Button title='Clear All Todo'>
 				<RiRefreshLine onClick={resetTodo} />
 			</Button>
 		</div>

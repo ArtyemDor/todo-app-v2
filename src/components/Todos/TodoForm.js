@@ -22,7 +22,7 @@ const TodoForm = ({ addTodo }) => {
 					value={textInInput}
 					onChange={e => setTextInInput(e.target.value)}
 				/>
-				<Button>send new todo</Button>
+				<Button disabled={!textInInput}>send new todo</Button>
 			</form>
 		</div>
 	)
