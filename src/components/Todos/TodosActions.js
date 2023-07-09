@@ -4,14 +4,14 @@ import Button from '../UI/Button'
 
 import styles from './TodosActions.module.css'
 
-const TodosActions = () => {
+const TodosActions = ({ resetTodo, deleteCompletedTodo }) => {
 	return (
 		<div className={styles.todosActionsContainers}>
 			<Button>
-				<RiDeleteBin2Line />
+				<RiDeleteBin2Line onClick={deleteCompletedTodo} />
 			</Button>
 			<Button>
-				<RiRefreshLine />
+				<RiRefreshLine onClick={resetTodo} />
 			</Button>
 		</div>
 	)

@@ -32,19 +32,39 @@ function App() {
 			)
 		)
 	}
-	console.log('todos', todos)
 
+	const resetTodoHandler = () => {
+		setTodos([])
+	}
+
+	const deleteCompletedTodoHandler = () => {
+		setTodos(todos.filter(todo => !todo.isCompleted))
+	}
+
+	const completedTodoCount = todos.filter(todo => todo.isCompleted).length
+
+	console.log('completedTodoCount', completedTodoCount)
 	return (
 		<div className='App'>
 			<h1>Hello from react-app-v2</h1>
 			<TodoForm addTodo={addTodoHandler} />
-			<TodosActions />
+			{todos.length > 0 && (
+				<TodosActions
+					resetTodo={resetTodoHandler}
+					deleteCompletedTodo={deleteCompletedTodoHandler}
+				/>
+			)}
 			<TodoList
 				todos={todos}
 				deleteTodo={deleteTodoHandler}
 				toggleTodo={toggleTodoHandler}
 			/>
 			{!todos.length > 0 && <h2>TodoList is empty</h2>}
+			{completedTodoCount > 0 && (
+				<h2>{`You have completed ${completedTodoCount} ${
+					completedTodoCount === 1 ? 'todo' : 'todos'
+				}`}</h2>
+			)}
 		</div>
 	)
 }
